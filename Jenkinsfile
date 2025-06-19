@@ -11,16 +11,6 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Arzakat/transchile.git'
-            }
-        }
-        stage('Install Dependencies') {
-            steps {
-                bat 'npm install' 
-            }
-        }
         stage('Análisis de Dependencias') {
             steps {
                 bat 'if not exist "dependency-check-report" mkdir "dependency-check-report"'
