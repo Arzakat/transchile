@@ -8,7 +8,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>transchile</name>
-    <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
     <properties>
@@ -68,10 +67,6 @@
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>3.3.1</version>
                 </plugin>
-                <!-- <plugin>
-                  <artifactId>maven-compiler-plugin</artifactId>
-                  <version>3.13.0</version>
-                </plugin> -->
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.3.0</version>
@@ -104,6 +99,12 @@
                     <configuration>
                         <mainClass>com.equipo.transchile.App</mainClass>
                     </configuration>
+                </plugin>
+                <!--sonar-->
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.9.1.2184</version>
                 </plugin>
             </plugins>
         </pluginManagement>

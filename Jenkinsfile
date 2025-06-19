@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.9.10' //mío: 3.9.10 original: 3.8.6
-        jdk 'JDK21' //mío: JDK21 original: JDK21
+        maven 'Maven 3.9.10'
+        jdk 'JDK21'
     }
     stages {
         stage('Checkout código') {
@@ -21,7 +21,7 @@ pipeline {
                 bat 'mvn test'
             }
         }
-        stage('Empaquetar') {
+        stage('Despliegue') {
             steps {
                 bat 'mvn package'
             }
