@@ -11,6 +11,26 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Arzakat/transchile.git'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                bat 'npm install' 
+            }
+        }
+        stage('Análisis de Dependencias') {
+            steps {
+                bat 'if not exist "dependency-check-report" mkdir "dependency-check-report"'
+                //tool 'mi-primer-dependency-check'
+                dependencyCheck(
+                    odcInstallation: 'mi-primer-dependency-check',
+                    additionalArguments: '--project "transchile" --scan "." --format HTML --format XML --out "./dependency-check-report" --enableExperimental --nodeAuditSkipDevDependencies false'
+                )
+            }
+        }
         stage('Compilar') {
             steps {
                 bat 'mvn clean compile'
